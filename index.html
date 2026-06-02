@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Momeen Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+:root{
+  --bg:#050816;
+  --bg2:#0f172a;
+  --text:#ffffff;
+  --text2:#94a3b8;
+  --accent:#8b5cf6;
+  --accent2:#22d3ee;
+  --card:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);
+}
+
+.light-mode{
+  --bg:#f8fafc;
+  --bg2:#ffffff;
+  --text:#0f172a;
+  --text2:#475569;
+  --card:rgba(255,255,255,0.75);
+  --border:rgba(0,0,0,0.08);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  transition:0.4s ease;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+  radial-gradient(circle at top left, rgba(139,92,246,0.15), transparent 30%),
+  radial-gradient(circle at bottom right, rgba(34,211,238,0.15), transparent 30%);
+  z-index:-3;
+}
+
+/*
+.cursor-glow{
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  position:fixed;
+  background:radial-gradient(circle, rgba(139,92,246,0.25), transparent 70%);
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  z-index:9999;
+}
+*/
+
+.blob{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(90px);
+  opacity:0.45;
+  z-index:-2;
+  animation:float 15s infinite ease-in-out;
+}
+
+.blob1{
+  width:350px;
+  height:350px;
+  background:#8b5cf6;
+  top:5%;
+  left:5%;
+}
+
+.blob2{
+  width:300px;
+  height:300px;
+  background:#22d3ee;
+  bottom:10%;
+  right:5%;
+}
+
+.blob3{
+  width:250px;
+  height:250px;
+  background:#ec4899;
+  top:50%;
+  left:40%;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0px)}
+  50%{transform:translateY(-50px)}
+}
+
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  padding:20px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(20px);
+  z-index:1000;
+}
+
+.logo{
+  font-size:1.7rem;
+  font-weight:700;
+  font-family:'Space Grotesk',sans-serif;
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:var(--text2);
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:var(--text);
+}
+
+.toggle-btn{
+  width:45px;
+  height:45px;
+  border:none;
+  border-radius:50%;
+  background:var(--card);
+  color:var(--text);
+  cursor:pointer;
+  border:1px solid var(--border);
+}
+
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:0 8%;
+  gap:60px;
+}
+
+.hero-badge{
+  display:inline-block;
+  padding:12px 20px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:var(--card);
+  margin-bottom:30px;
+}
+
+.hero h1{
+  font-size:5rem;
+  line-height:1.1;
+  font-family:'Space Grotesk',sans-serif;
+}
+
+.hero p{
+  margin-top:25px;
+  line-height:1.9;
+  color:var(--text2);
+  font-size:1.1rem;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:20px;
+  margin-top:35px;
+}
+
+.btn{
+  padding:15px 28px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.4s;
+}
+
+.primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+}
+
+.secondary{
+  border:1px solid var(--border);
+  color:var(--text);
+}
+
+.btn:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 30px rgba(139,92,246,0.35);
+}
+
+.socials{
+  display:flex;
+  gap:15px;
+  margin-top:35px;
+}
+
+.socials a{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  background:var(--card);
+  border:1px solid var(--border);
+  color:var(--text);
+  transition:0.3s;
+}
+
+.socials a:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 25px rgba(92, 246, 195, 0.35);
+}
+
+.hero-image{
+  display:flex;
+  justify-content:center;
+}
+
+.profile-card{
+  position:relative;
+  width:420px;
+}
+
+.profile-card img{
+  width:100%;
+  border-radius:30px;
+  position:relative;
+  z-index:2;
+}
+
+.profile-glow{
+  position:absolute;
+  inset:-20px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border-radius:40px;
+  filter:blur(40px);
+  opacity:0.5;
+}
+
+section{
+  padding:120px 8%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:70px;
+}
+
+.section-title span{
+  color:var(--accent2);
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.section-title h2{
+  font-size:3rem;
+  margin-top:15px;
+  font-family:'Space Grotesk',sans-serif;
+}
+
+.glass{
+  background:var(--card);
+  border:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  border-radius:25px;
+}
+
+.about-card{
+  padding:50px;
+}
+
+.about-card p{
+  color:var(--text2);
+  line-height:1.9;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:40px;
+}
+
+.stat{
+  padding:30px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.03);
+  text-align:center;
+}
+
+.stat h3{
+  font-size:2rem;
+}
+
+.skills-grid,
+.projects-grid,
+.certificate-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+.skill,
+.certificate,
+.project{
+  transition:0.4s;
+}
+
+.skill:hover,
+.certificate:hover,
+.project:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 40px rgba(139,92,246,0.2);
+}
+
+.skill{
+  padding:40px;
+  text-align:center;
+}
+
+.skill i,
+.certificate i{
+  font-size:3rem;
+  margin-bottom:20px;
+  color:var(--accent2);
+}
+
+.project{
+  overflow:hidden;
+}
+
+.project img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  transition:0.4s;
+}
+
+.project:hover img{
+  transform:scale(1.08);
+}
+
+.project-content{
+  padding:30px;
+}
+
+.project-content p{
+  margin-top:15px;
+  line-height:1.8;
+  color:var(--text2);
+}
+
+.tags{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.tags span{
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--border);
+}
+
+.project-buttons{
+  display:flex;
+  gap:15px;
+  margin-top:25px;
+}
+
+.project-buttons a{
+  text-decoration:none;
+  padding:12px 18px;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+}
+
+.certificate{
+  padding:40px;
+  text-align:center;
+}
+
+.contact-form{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  padding:50px;
+}
+
+.contact-form input,
+.contact-form textarea{
+  padding:18px;
+  border:none;
+  border-radius:18px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  color:var(--text);
+}
+
+footer{
+  padding:40px;
+  text-align:center;
+  color:var(--text2);
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media(max-width:1024px){
+
+.hero{
+  grid-template-columns:1fr;
+  text-align:center;
+  padding-top:120px;
+}
+
+.hero h1{
+  font-size:3.5rem;
+}
+
+.hero-buttons,
+.socials{
+  justify-content:center;
+}
+
+.nav-links{
+  display:none;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero h1{
+  font-size:2.6rem;
+}
+
+.section-title h2{
+  font-size:2.2rem;
+}
+
+.stats{
+  grid-template-columns:1fr;
+}
+
+.profile-card{
+  width:100%;
+}
+
+#internship .certificate{
+  padding:40px;
+  text-align:center;
+}
+
+#internship .certificate i{
+  font-size:3rem;
+  color:var(--accent2);
+  margin-bottom:20px;
+}
+
+.internship-company{
+    margin-top:10px;
+    color:var(--accent2);
+    font-weight:600;
+}
+
+.internship-meta{
+    margin-top:10px;
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    color:var(--text2);
+    font-size:0.95rem;
+}
+
+.internship-location{
+    margin-top:6px;
+    color:var(--text2);
+    font-size:0.95rem;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="cursor-glow"></div>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<nav>
+  <div class="logo">Momeen.</div>
+
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="/home/momeen/Desktop/Portfolio/assets/Momeen_Resume.pdf" target="_blank">Resume</a>
+    <a href="#skills">Skills</a>
+    <a href="#internship">Internship</a>
+    <a href="#projects">Projects</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <button class="toggle-btn" id="themeBtn">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+</nav>
+
+<section class="hero">
+
+<div class="hero-content reveal">
+
+  <h2 style="font-size: 230%;">
+    Momeen Bashar
+  </h2>
+
+<span class="hero-badge">
+Pursuing BCA | 2nd Year 
+</span>
+
+<p>
+Asprining Entrepreneurship | IoT | Frontend Development | Video Editing | Prompt Engeneering | Generative AI. 
+</p>
+
+<div class="hero-buttons">
+  <a href="/home/momeen/Desktop/Portfolio/assets/Momeen_Resume.pdf" target="_blank" class="btn primary">Resume</a>
+  <a href="#contact" class="btn secondary">Contact Me</a>
+</div>
+
+<div class="socials">
+  <a href="https://github.com/Bashar071"><i class="fab fa-github"></i></a>
+  <a href="https://www.linkedin.com/in/momeenbashar/"><i class="fab fa-linkedin"></i></a>
+  <a href="https://www.instagram.com/rabbitgamer_m_4"><i class="fab fa-instagram"></i></a>
+</div>
+
+</div>
+
+<div class="hero-image reveal">
+  <div class="profile-card">
+    <div class="profile-glow"></div>
+
+    <img src="/home/momeen/Desktop/Portfolio/assets/momeen.png" alt="profile" style="width: 400px; height: 400px; object-fit: cover; border-radius: 50%; border: 5px solid #050816;">
+  </div>
+</div>
+
+</section>
+
+<section id="about">
+
+<div class="section-title reveal">
+  <span>About</span>
+  <h2>Learning With Experiences</h2>
+</div>
+
+<div class="about-card glass reveal">
+
+<p>
+My experience in AI-focused training and project work has strengthened
+ my technical perspective, giving me insight into how intelligent systems 
+ can support and elevate creative workflows. This combination 
+ of creative and technical skills drives my interest in building digital 
+ experiences that are both innovative and meaningful.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+  <h3>2</h3>
+  <p>Projects</p>
+</div>
+
+<div class="stat">
+  <h3>4+</h3>
+  <p>Technologies</p>
+</div>
+
+<div class="stat">
+  <h3>10+</h3>
+  <p>Awards</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="skills">
+
+<div class="section-title reveal">
+  <span>Skills</span>
+  <h2>Tech & Expertise</h2>
+</div>
+
+<div class="skills-grid reveal">
+
+<div class="skill glass">
+  <i class="fab fa-html5"></i>
+  <h3>HTML</h3>
+</div>
+
+<div class="skill glass">
+  <i class="fab fa-css3-alt"></i>
+  <h3>CSS</h3>
+</div>
+
+<div class="skill glass">
+  <i class="fas fa-wifi"></i>
+  <h3>IoT</h3>
+</div>
+
+<div class="skill glass">
+  <i class="fas fa-robot"></i>
+  <h3>Generative AI</h3>
+</div>
+
+<div class="skill glass">
+  <i class="fas fa-wand-magic-sparkles"></i>
+  <h3>Prompt Engineering</h3>
+</div>
+
+<div class="skill glass">
+  <i class="fab fa-github-alt"></i>
+  <h3>GitHub</h3>
+</div>
+
+<div class="skill glass">
+  <i class="fas fa-film"></i>
+  <h3>Video Editing</h3>
+</div>
+
+</div>
+</section>
+
+<section id="internship">
+
+<div class="section-title reveal">
+  <span>Internship</span>
+  <h2>Experience & Training</h2>
+</div>
+
+<div class="skills-grid reveal">
+
+  <div class="certificate glass">
+
+    <i class="fas fa-video"></i>
+
+    <h3>Video Editor</h3>
+
+    <h4 class="internship-company">
+        SmallFare™
+    </h4>
+
+    <div class="internship-meta">
+        <span>Jul 2025 – Oct 2025</span>
+        <span>•</span>
+        <span>4 Months</span>
+    </div>
+
+    <div class="internship-location">
+        India · Remote · Internship
+    </div>
+
+    <p style="margin-top:15px;color:var(--text2);line-height:1.8;">
+        Worked as a Video Editing Intern, responsible for editing and producing high-quality 
+        video content for digital platforms. Tasks include trimming and sequencing footage, 
+        adding transitions, visual effects, sound design, and ensuring content aligns with brand 
+        and creative direction. Collaborating with marketing teams to deliver 
+        engaging and polished videos on tight deadlines.
+    </p>
+
+    <div class="tags" style="justify-content:center;">
+        <span>Video Editing</span>
+        <span>Content Creation</span>
+        <span>Capcut</span>
+        <span>Collaboration</span>
+    </div>
+
+  </div>
+
+<div class="certificate glass">
+
+    <i class="fas fa-robot"></i>
+
+    <h3>Artificial Intelligence Intern</h3
+
+    <h4 class="internship-company">
+        Lenovo
+    </h4>
+
+    <div class="internship-meta">
+        <span>Jul 2025 – Aug 2025</span>
+        <span>•</span>
+        <span>2 Months</span>
+    </div>
+
+    <div class="internship-location">
+        India · Remote · Internship
+    </div>
+
+    <p style="margin-top:15px;color:var(--text2);line-height:1.8;">
+        Completed project-based learning modules in Artificial Intelligence,
+        gaining practical exposure to real-world applications.
+
+        Participated in expert-led masterclasses and industry webinars, 
+        strengthening knowledge of AI frameworks and emerging technologies.
+        
+        Collaborated with peers and mentors on problem-solving exercises, 
+        enhancing critical thinking, innovation, and communication skills.
+    </p>
+
+    <div class="tags" style="justify-content:center;">
+        <span>Artificial Intelligence</span>
+        <span>Computer Networking</span>
+        <span>Collaboration</span>
+    </div>
+
+  </div>
+
+<div class="certificate glass">
+
+    <i class="fas fa-store"></i>
+
+    <h3>Stationery</h3>
+
+    <h4 class="internship-company">
+        Ambika Stationery
+    </h4>
+
+    <div class="internship-meta">
+        <span>Jun 2024 – Aug 2024</span>
+        <span>•</span>
+        <span>3 Months</span>
+    </div>
+
+    <div class="internship-location">
+        Goa · On Site · Internship
+    </div>
+
+    <p style="margin-top:15px;color:var(--text2);line-height:1.8;">
+        I have developed practical skills in handling various stationery-related tasks.
+         My experience includes printing and scanning documents, typing and formatting content using 
+         Microsoft Word, and assisting customers with the sale of stationery items. 
+         I have gained hands-on knowledge of daily operations in a stationery environment, 
+         including organizing supplies, restocking items, and providing customer service.
+    </p>
+
+    <div class="tags" style="justify-content:center;">
+        <span>Stationery</span>
+        <span>Print Management</span>
+        <span>Microsoft Office</span>
+        <span>Typing</span>
+        <span>Sales</span>
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<section id="projects">
+
+<div class="section-title reveal">
+  <span>Projects</span>
+  <h2>Featured Work</h2>
+</div>
+
+<center> 
+<div class="projects-grid reveal">
+
+<div class="project glass tilt">
+
+<img src="/home/momeen/Desktop/Portfolio/assets/Smartsight.png" alt="SmartSight">
+<div class="project-content">
+
+<h3> SmartSight </h3>
+
+<p>
+Developed a wearable assistive technology prototype for visually impaired individuals 
+ to detect obstacles and provide real-time audio alerts. Integrated IR sensors, buzzer system,
+  and spectacle frame to ensure portability and ease of use. Achieved instant obstacle detection,
+   reducing collision risks and enhancing mobility.
+</p>
+
+<div class="tags">
+  <span>IoT</span>
+  <span>Sensors</span>
+  <span>Wiring</span>
+</div>
+
+<div class="project-buttons">
+  <!-- <a href="#">LinkedIn</a> -->
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+</center>
+
+<section id="certificates">
+
+<div class="section-title reveal">
+  <span>Certificates</span>
+  <h2>Achievements & Certifications</h2>
+</div>
+
+<div class="certificate-grid reveal">
+
+<div class="certificate glass">
+  <i class="fa-solid fa-trophy"></i>
+  <h3>Tech Wizard of the Year 2026</h3>
+  <p>My college on Annual Prize Distribution, I was honored to receive this 
+    award for my contributions and outstanding performance in the entire academic year.</p>
+</div>
+
+<div class="certificate glass">
+  <i class="fa-solid fa-trophy"></i>
+  <h3>Tech Performer of the Year</h3>
+  <p>My college on Annual Prize Distribution, I was honored to 
+    receive this award for my contributions and outstanding performance </p>
+</div>
+
+<div class="certificate glass">
+  <i class="fa-solid fa-award"></i>
+  <h3>Converge 3.0</h3>
+  <p>Ranked in the Top 10 out of 180+ teams in the Innovative Idea Challenge 2026, 
+    presenting an innovative idea and prototype to the judges.</p>
+</div>
+
+<div class="certificate glass">
+  <i class="fa-solid fa-certificate"></i>
+  <h3>Networking Fundamentals and Troubleshooting</h3>
+  <p>
+Successfully completed a 30-hour professional course on Networking Fundamentals 
+and Troubleshooting. </p>
+</div>
+
+<div class="certificate glass">
+  <i class="fa-solid fa-certificate"></i>
+  <h3>HTML Essential </h3>
+  <p>
+Successfully completed a course on HTML Fundamentals. </p>
+</div>
+
+
+<div class="certificate glass">
+  <i class="fa-solid fa-certificate"></i>
+  <h3>Python Essential </h3>
+  <p>
+Successfully completed a course on Python Fundamentals. </p>
+</div>
+
+
+
+</div>
+</section>
+
+<section id="contact">
+
+<div class="section-title reveal">
+  <span>Contact</span>
+  <h2>Let's Build Something Amazing</h2>
+</div>
+
+<form class="contact-form glass reveal" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="80a4b749-917f-465e-b32b-c410bff50218">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea rows="6" name="message" placeholder="Your Message" required></textarea>
+
+  <button class="btn primary">Send Message</button>
+</form>
+
+</section>
+
+<footer>
+© 2026 Momeen Bashar.
+</footer>
+
+<script>
+
+const glow = document.querySelector('.cursor-glow');
+
+window.addEventListener('mousemove', (e)=>{
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+});
+
+const reveals = document.querySelectorAll('.reveal');
+
+function reveal(){
+  reveals.forEach((el)=>{
+    const top = el.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if(top < windowHeight - 100){
+      el.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', reveal);
+reveal();
+
+const themeBtn = document.getElementById('themeBtn');
+
+if(localStorage.getItem('theme') === 'light'){
+  document.body.classList.add('light-mode');
+}
+
+themeBtn.addEventListener('click', ()=>{
+  document.body.classList.toggle('light-mode');
+
+  if(document.body.classList.contains('light-mode')){
+    localStorage.setItem('theme','light');
+  }else{
+    localStorage.setItem('theme','dark');
+  }
+});
+
+const tiltCards = document.querySelectorAll('.tilt');
+
+ tiltCards.forEach(card=>{
+
+  card.addEventListener('mousemove',(e)=>{
+
+    const rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateY = ((x / rect.width) - 0.5) * 18;
+    const rotateX = ((y / rect.height) - 0.5) * -18;
+
+    card.style.transform = `perspective(1000px)
+    rotateX(${rotateX}deg)
+    rotateY(${rotateY}deg)
+    translateY(-10px)`;
+
+  });
+
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+  });
+
+});
+
+</script>
+
+</body>
